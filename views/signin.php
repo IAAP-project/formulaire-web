@@ -8,6 +8,8 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php") {
 ?>
 <div class="box-sign">
 
+	<img style="margin: auto;" width="25%" height="25%" src="img/Logo_nouveau.png">
+
 	<p class="titleForm">Sign In</p>
 	<form action="action_signin.php" method="POST">
 		<p>E-mail*</p>
