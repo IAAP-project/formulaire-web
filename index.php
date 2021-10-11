@@ -21,53 +21,17 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
     <title>Form</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/form.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/signin.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/signup.css'>
 </head>
 
 <body>
-    <script type="text/javascript">
-        function goPageSignUp() {
-            window.location.href = "./index.php?view=signup"
-        }
 
-        function goPageSignIn() {
-            window.location.href = "./index.php?view=signin"
-        }
-
-        function SignOff(){
-            window.location.href = "./index.php?view=signoff"
-        }
-    </script>
     <?php
     session_start();
-    $view = false;
-    if (isset($_GET["view"]) && !($_GET["view"] == "")) {
-        $view = $_GET["view"];
-    }
-
-    if ($view != "signin" && $view != "signup") {
-        if (!isset($_SESSION["id_user"]) || ($_SESSION["id_user"] == "")) {
-            header("Location: index.php?view=signin");
-            die();
-        }
-    }
+    $view = "form";
 
     switch ($view) {
         case "form":
             include("views/form.php");
-            break;
-
-        case "signup":
-            include("views/signup.php");
-            break;
-
-        case "signin":
-            include("views/signin.php");
-            break;
-        case "signoff":
-            session_destroy();
-            header("Location: index.php?view=signin");
             break;
     }
     ?>

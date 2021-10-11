@@ -4,9 +4,16 @@ include_once("modele.php");
 $method = $_SERVER["REQUEST_METHOD"];
 
 if ($method === "POST") {
-    
-    $id_user = ($_SESSION["id_user"]);
 
+    $prenom = validerPOST("firstname");
+    $nom = validerPOST("lastname");
+    $gender = validerPOST("gender");
+    $date_de_naissance = validerPOST("date_de_naissance");
+    $email = validerPOST("email");
+
+    $ville = validerPOST("ville");
+    $code_postal = validerPOST("code_postal");
+    
     $poids = validerPOST("poids");
     $taille = validerPOST("taille");
 
@@ -49,10 +56,8 @@ if ($method === "POST") {
     }
 
     $description = validerPOST("description");
-    $ville = validerPOST("ville");
-    $code_postal = validerPOST("code_postal");
 
-    insertForm($id_user, $poids, $taille, $fumeur, $diabetique, $hypertension, $tension_arterielle_systolique, $cholesterol, $cholesterol_hdl, $embolie_pulmonaire_annee, $angine_de_poitrine_annee, $insuffisance_cardiaque_annee, $accident_vasculaire_cerebral_annee, $infarctus_annee, $arterite_des_membres_inferieurs_annee, $description, $ville, $code_postal);
+    insertForm($prenom, $nom, $gender, $date_de_naissance,$email, $poids, $taille,$ville, $code_postal, $fumeur, $diabetique, $hypertension, $tension_arterielle_systolique, $cholesterol, $cholesterol_hdl, $embolie_pulmonaire_annee, $angine_de_poitrine_annee, $insuffisance_cardiaque_annee, $accident_vasculaire_cerebral_annee, $infarctus_annee, $arterite_des_membres_inferieurs_annee, $description);
 
     $urlBase = dirname($_SERVER["PHP_SELF"]) . "/index.php?view=form";
     header("Location:" . $urlBase . $qs);
